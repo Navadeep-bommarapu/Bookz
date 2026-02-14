@@ -93,4 +93,22 @@ create policy "Users can delete their own bookmarks" on bookmarks
 
 ## License
 
-This project is licensed under the MIT License.
+## Challenges & Solutions
+
+During the development of Bookz, we encountered and solved several technical challenges:
+
+### 1. **Vercel Build Errors (Missing Env Vars)**
+- **Problem**: The build failed on Vercel because `NEXT_PUBLIC_SUPABASE_URL` was missing during the static generation phase.
+- **Solution**: We updated `lib/supabase.ts` to provide fallback values during the build process, ensuring the app builds successfully even without immediate access to environment variables.
+
+### 2. **Authentication Flow UX**
+- **Problem**: The original page-based login was disruptive and not user-friendly.
+- **Solution**: We refactored Authentication into a **Modal-based flow** (`AuthModal.tsx`), allowing users to sign in without leaving the landing page. We also removed Email/Password login to streamline the experience with Google OAuth.
+
+### 3. **Real-time UI Updates**
+- **Problem**: The bookmarks list required a page refresh to show new items.
+- **Solution**: We implemented **Optimistic UI Updates**. When a user adds or deletes a bookmark, the local state updates *instantly*, while the database operation happens in the background.
+
+### 4. **Complex Metadata Fetching**
+- **Problem**: Fetching Open Graph (OG) tags from client-side code causes CORS errors.
+- **Solution**: We built a dedicated API route (`app/api/metadata/route.ts`) that acts as a proxy to securely fetch and parse metadata from target URLs on the server side.
