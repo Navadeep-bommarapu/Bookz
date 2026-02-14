@@ -18,6 +18,24 @@ Bookz is a smart bookmark manager designed for readers. It helps you organize, t
 -   **Backend & Auth**: [Supabase](https://supabase.com/)
 -   **Icons**: [Lucide React](https://lucide.dev/)
 
+## Project Structure
+
+```bash
+├── app/
+│   ├── dashboard/      # Protected dashboard page
+│   ├── auth/callback/  # OAuth callback handler
+│   ├── globals.css     # Global styles & theme variables
+│   └── page.tsx        # Landing Page
+├── components/
+│   ├── ui/             # Reusable UI components (Modal, Button)
+│   ├── AuthModal.tsx   # Login/Signup Modal
+│   ├── BookmarkForm.tsx# Add Bookmark Form
+│   └── BookmarkList.tsx# Bookmark Display List
+├── lib/
+│   └── supabase.ts     # Supabase client configuration
+└── public/             # Static assets
+```
+
 ## Getting Started
 
 1.  **Clone the repository**:
