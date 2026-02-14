@@ -91,8 +91,6 @@ create policy "Users can delete their own bookmarks" on bookmarks
   for delete using (auth.uid() = user_id);
 ```
 
-## License
-
 ## Challenges & Solutions
 
 During the development of Bookz, we encountered and solved several technical challenges:
